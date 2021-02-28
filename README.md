@@ -1,17 +1,18 @@
-#Country Information
+Country Information
+----------------------
 This is a web apps made by Django framework (python), an Assignment project provided by a well known company.<br>
 Country related information will be pulled from a 3rd party API and store to DB. It will be provided by REST API & template too. Functional programming concept and Unit Testing is applied here.
 
-<h3><span style="color: red">
-Currently latest branch is ```dev_hasnat```
-</span><h3>
+###Currently latest branch is ```dev_hasnat```
 
 API's documentation
 -------------------
 ```djangourlpath
 http://127.0.0.1:8000/api/v1/docs/
 ```
+
 ##steps: [setup dev environment]<h3><span style="color: green">For Ubuntu:</span><h3>
+
 ### 1. Clone repo
 `$ git clone `
 
