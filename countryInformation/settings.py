@@ -152,3 +152,7 @@ STATICFILES_DIRS = [
 # -----Media files------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# -----Environment Variables-----
+# API to populate our DB
+COUNTRY_MODEL_POPULATE_API_URL = env('COUNTRY_API_URL')

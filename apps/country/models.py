@@ -27,7 +27,7 @@ class CountryInfo(BaseModel):
     capital = models.CharField(max_length=25,null=True, blank=True)
     population = models.PositiveIntegerField(null=True, blank=True)
     timezone = models.JSONField(blank=True, null=True)
-    flag = models.ImageField(upload_to=flag_image_upload_path, blank=True, null=True)
+    flag = models.FileField(upload_to=flag_image_upload_path, blank=True, null=True)
     languages = models.JSONField(blank=True, null=True)
     neighbouring_countries = models.JSONField(blank=True, null=True)
 
