@@ -31,11 +31,13 @@ Steps: [setup dev environment]
 ### 5. Copy `.env.example` file to `.env`
 ### 6. Create a PostgreSQL database according to `.env.example`
 
-### 7. Migrate, create superuser and run project
+### 7. Migrate, create superuser
 `$ python manage.py migrate`<br />
-`$ python manage.py createsuperuser` \
+`$ python manage.py createsuperuser`
+
+### 8. Populate data from 3rd party API to DB
+`$python manage.py populate_data`
+
+### 9. Run project
 `$ python manage.py runserver`
-
-
-
 ## :wink: happy coding :wink:
