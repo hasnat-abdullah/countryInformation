@@ -36,7 +36,7 @@ Steps: [setup dev environment]
 `$ python manage.py createsuperuser`
 
 ### 8. Populate data from 3rd party API to DB
-`$python manage.py populate_data`
+`$ python manage.py populate_data`
 
 ### 9. Run project
 `$ python manage.py runserver`
