@@ -40,7 +40,6 @@ def country_filtering(request):
     """filter country list based on query_param"""
     language = request.query_params.get("language", None)
     country = request.query_params.get("country", None)
-    print(language)
     q_objects = Q()  # blank query object
 
     if language is not None:
@@ -50,7 +49,6 @@ def country_filtering(request):
     if country is not None:
         # search by Exact or partial country name
         q_objects &= Q(name__icontains=country)  # 'and' the Q objects together
-    print(q_objects)
     return q_objects
 
 
@@ -66,7 +64,6 @@ class SearchCountriesAPIView(APIView):
         """
         try:
             query_object = country_filtering(request)
-            print(query_object)
             if len(query_object) < 1:
                 # logger
                 Log.error("Query params didn't provide.", request)
