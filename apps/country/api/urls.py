@@ -1,8 +1,8 @@
 from django.urls import path, include
-from .views import CountryListAPIView, CountryDetailsAPIView
+from .views import CountryListCreateAPIView, CountryGetDeleteUpdateAPIView
 
 '''country apps API url patterns'''
 urlpatterns = [
-    path('countries/', CountryListAPIView.as_view()),
-    path('country/<int:id>', CountryDetailsAPIView.as_view()),
+    path('countries/', CountryListCreateAPIView.as_view()),
+    path('countries/<int:id>', CountryGetDeleteUpdateAPIView.as_view()),
 ]
