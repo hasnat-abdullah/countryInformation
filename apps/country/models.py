@@ -30,11 +30,11 @@ class CountryInfo(BaseModel):
     alphacode3 = models.CharField(max_length=4,null=True, blank=True, db_index=True, unique=True)
     capital = models.CharField(max_length=25,null=True, blank=True)
     population = models.PositiveIntegerField(null=True, blank=True)
-    timezones = ArrayField(ArrayField(models.CharField(max_length=20, blank=True)),size=1,)
+    timezones = ArrayField(models.CharField(max_length=20, blank=True), null=True)
     flag_url = models.URLField(blank=True, null=True)
     flag = models.FileField(upload_to='flag', blank=True, null=True)
     languages = models.JSONField(blank=True, null=True)
-    neighbouring_countries = ArrayField(ArrayField(models.CharField(max_length=5, blank=True)),size=1,)
+    neighbouring_countries = ArrayField(models.CharField(max_length=5, blank=True), null=True)
 
     def save(self, *args, **kwargs):
         try:

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 import environ
+import logging.config
+from django.utils.log import DEFAULT_LOGGING
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -157,3 +159,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # -----Environment Variables-----
 # API to populate our DB
 COUNTRY_MODEL_POPULATE_API_URL = env('COUNTRY_API_URL')
+

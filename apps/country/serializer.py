@@ -3,28 +3,25 @@ from .models import CountryInfo
 
 
 class CountryModelSerializer(serializers.ModelSerializer):
-    alphacode2 = serializers.SerializerMethodField(source='alpha2Code')
-    alphacode3 = serializers.SerializerMethodField(source='alpha3Code')
-    neighbouring_countries = serializers.SerializerMethodField(source='borders')
-    flag_url = serializers.SerializerMethodField(source='flag')
-
+    flag = serializers.SerializerMethodField()
     class Meta:
         model = CountryInfo
         fields = (
             'name',
             'alphacode2',
-            'alphacode3',
             'capital',
             'population',
             'timezones',
-            'flag_url',
+            'flag',
             'languages',
             'neighbouring_countries',
         )
 
-    def create(self, validated_data):
-        return CountryInfo.objects.create(**validated_data)
-
+    def get_flag(self, obj):
+        if obj.flag and hasattr(obj.flag, 'url'):
+            return self.context['request'].build_absolute_uri( obj.flag.url)
+        else:
+            return None
 
 class CountrySavelSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=50, allow_blank=False, allow_null=False)
