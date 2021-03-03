@@ -22,7 +22,6 @@ def populate_data_to_db(data):
                 obj = CountryInfo(
                     name=item.get('name'),
                     alphacode2=item.get('alpha2Code', None),
-                    alphacode3=item.get('alpha3Code',None),
                     capital=item.get('capital',None),
                     population=item.get('population',None),
                     timezones=item.get('timezones',None),

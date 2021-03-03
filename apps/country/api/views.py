@@ -61,7 +61,7 @@ def country_filtering(request):
 class SearchCountriesAPIView(APIView):
     """Search countris by its exact or partial name and exact language"""
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     def get(self, request,  *args, **kwargs):
         """
@@ -92,7 +92,7 @@ class SearchCountriesAPIView(APIView):
 class CountryListCreateAPIView(generics.ListCreateAPIView):
     """return All country list view order by name and also insert a country info instance."""
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     serializer_class = CountryModelSerializer
 
@@ -103,7 +103,7 @@ class CountryListCreateAPIView(generics.ListCreateAPIView):
 class CountryGetDeleteUpdateAPIView(generics.RetrieveUpdateDestroyAPIView):
     """get, update and delete a specific country"""
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     serializer_class = CountryModelSerializer
     lookup_url_kwarg = 'id'
@@ -115,7 +115,7 @@ class CountryGetDeleteUpdateAPIView(generics.RetrieveUpdateDestroyAPIView):
 class NeighbouringCountriesAPIView(generics.RetrieveAPIView):
     """get, update and delete a specific country"""
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,]
 
     serializer_class = NeighbouringCountryModelSerializer
     lookup_url_kwarg = 'id'
@@ -125,7 +125,7 @@ class NeighbouringCountriesAPIView(generics.RetrieveAPIView):
 
 
 class UserToken(APIView):
-    """    """
+    """ generate token to hit api  """
 
     def post(self, request, format=None):
         """

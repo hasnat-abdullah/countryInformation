@@ -4,12 +4,16 @@ from rest_framework.status import (
 )
 from django.shortcuts import HttpResponse
 import os
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 class LogAPIView(APIView):
     """
     To see desired dates log
     """
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request, date_n_type):
 

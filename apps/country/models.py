@@ -27,7 +27,6 @@ class CountryInfo(BaseModel):
     '''
     name = models.CharField(max_length=80, null=False, blank=False, db_index=True, unique=True)
     alphacode2 = models.CharField(max_length=3,null=True, blank=True, db_index=True, unique=True)
-    alphacode3 = models.CharField(max_length=4,null=True, blank=True, db_index=True, unique=True)
     capital = models.CharField(max_length=25,null=True, blank=True)
     population = models.PositiveIntegerField(null=True, blank=True)
     timezones = ArrayField(models.CharField(max_length=20, blank=True), null=True)
