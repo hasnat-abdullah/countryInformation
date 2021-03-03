@@ -10,6 +10,8 @@ API's documentation
 ```djangourlpath
 http://127.0.0.1:8000/api/v1/docs/
 ```
+or
+https://docs.google.com/document/d/1m_l0LnUDy70Ig1X1apNolJZ6E9nzQBGxb7ExkzCGpas/edit?usp=sharing
 
 Steps: [setup dev environment]
 ---------------------
