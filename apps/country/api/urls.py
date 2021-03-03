@@ -7,4 +7,5 @@ urlpatterns = [
     path('countries/<int:id>', CountryGetDeleteUpdateAPIView.as_view()),
     path('countries/<int:id>/neighbour/', NeighbouringCountriesAPIView.as_view()),
     path('countries/search/', SearchCountriesAPIView.as_view()),
+    path('get_token/', UserToken.as_view()),
 ]

@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from apps.country.views import RegisterView
+from django.contrib.auth import views as auth_views
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -29,7 +31,6 @@ schema_view = get_schema_view(
         terms_of_service="https://www.google.com/policies/terms/",
     ),
     public=True,
-    #permission_classes=(permissions.IsAuthenticated,),
 )
 
 urlpatterns = [
@@ -37,6 +38,9 @@ urlpatterns = [
     path('api/v1/docs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api/v1/', include('API.urls')),
     path('', include('apps.country.urls')),
+    path('login', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
+    path('logout', auth_views.LogoutView.as_view(), name="logout"),
+    path('register', RegisterView.as_view(), name="register"),
     path('log/', include('logs.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,14 +1,19 @@
 from django.shortcuts import render
 from .models import *
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.urls import reverse_lazy
 # specific to this view
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,CreateView
+from django.views import View
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models.query_utils import Q
+from .forms import SignUpForm
+from django.contrib.auth.forms import UserCreationForm
 from logs.log import *
 
 
+@method_decorator(login_required, name='dispatch')
 class IndexView(ListView):
     """"""
     model = CountryInfo
@@ -44,8 +49,16 @@ class IndexView(ListView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class CountryDetailView(DetailView):
     """"""
     model = CountryInfo
     template_name = 'country_details.html'
     context_object_name = 'country'
+
+
+class RegisterView(CreateView):
+    """"""
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'register.html'

@@ -1,0 +1,37 @@
+{% extends '_base_template.html' %}
+{% load static %}
+{% block seo_description %}{% endblock %}
+{% block seo_keyword %}{% endblock %}
+{% block title %}Home{% endblock %}
+{% block stylesheet %}
+    <style>
+        .helptext {
+            visibility: hidden;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <br><br>
+    <div class="col d-flex justify-content-center">
+    <div class="card col-sm-7 center ">
+                <article class="card-body">
+                    <a href="{% url 'login' %}" class="float-right btn btn-outline-primary">Login</a>
+                    <h4 class="card-title mb-4 mt-1">Sign up</h4>
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Register</button>
+                        </div> <!-- form-group// -->
+                    </form>
+                </article>
+            </div> <!-- card.// -->
+    </div>
+
+    <br>
+
+{% endblock %}
+{% block script %}
+{% endblock %}
+
