@@ -1,5 +1,7 @@
 from django.urls import path
+from .views import *
 
 urlpatterns = [
-#    path('country_list/', CountryList.as_view()),
+    path('', IndexView.as_view(), name="index"),
+    #path('contact', ContactView.as_view(), name="contact")
 ]

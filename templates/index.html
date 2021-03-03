@@ -1,0 +1,52 @@
+{% extends '_base_template.html' %}
+{% load static %}
+{% block seo_description %}{% endblock %}
+{% block seo_keyword %}{% endblock %}
+{% block title %}Home{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div>
+    <h2 class="text-center">Country List</h2>
+    </div>
+
+  <table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Alphacode2</th>
+      <th scope="col">Capital</th>
+      <th scope="col">Population</th>
+      <th scope="col">Timezone</th>
+      <th scope="col">Flag</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for country in countries %}
+          <tr>
+              <td class="align-middle">{{ forloop.counter }}</td>
+              <td class="align-middle">{{ country.name }}</td>
+              <td class="align-middle">{{ country.alphacode2 }}</td>
+              <td class="align-middle">{{ country.capital }}</td>
+              <td class="align-middle">{{ country.population }}</td>
+              <td class="align-middle">{{ country.timezones }}</td>
+              <td class="align-middle"><img alt="{{ country.name}}" class="flag-img-thumb" src="{{country.flag.url}}" /></td>
+              <td class="align-middle"><a class="btn btn-info" href="#" role="button">Details</a></td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+{% if is_paginated %}
+    {% include "_pagination.html" %}
+{% endif %}
+
+    <br>
+
+{% endblock %}
+{% block script %} {% endblock %}
