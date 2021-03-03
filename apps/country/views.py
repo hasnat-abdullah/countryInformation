@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 # specific to this view
 from django.views.generic import ListView,DetailView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from django.db.models.query_utils import Q
 from logs.log import *
 
 
@@ -16,6 +16,12 @@ class IndexView(ListView):
     context_object_name = 'countries'
     fields = ('name', 'alphacode2','capital','population','timezones','flag')
     paginate_by = 20
+
+    def get_queryset(self):
+        query_param = self.request.GET.get("q", None)
+        if query_param is not None:
+            return CountryInfo.objects.filter(Q(name__icontains=query_param)).order_by('name')
+        return CountryInfo.objects.all().order_by('name')
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)

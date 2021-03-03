@@ -39,8 +39,12 @@
       <dt class="col-sm-3">Neighbouring_countries</dt>
       <dd class="col-sm-9">{{ country.neighbouring_countries }}</dd>
       <dt class="col-sm-3">Flag</dt>
-      <dd class="col-sm-9"><img style="max-height: 250px; max-width: 250px" alt="{{ country.name}}" src="{{country.flag.url}}" /></dd>
-
+        {% if country.flag %}
+            <dd class="col-sm-9"><img style="max-height: 250px; max-width: 250px" alt="{{ country.name }}"
+                                      src="{{ country.flag.url }}"/></dd>
+        {% else %}
+            <dd class="col-sm-9"></dd>
+        {% endif %}
     </dl>
 
     </div>
