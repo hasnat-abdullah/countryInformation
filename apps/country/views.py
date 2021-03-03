@@ -14,6 +14,7 @@ class IndexView(ListView):
     model = CountryInfo
     template_name = 'index.html'
     context_object_name = 'countries'
+    fields = ('name', 'alphacode2','capital','population','timezones','flag')
     paginate_by = 20
 
     def get_context_data(self, **kwargs):
@@ -24,10 +25,21 @@ class IndexView(ListView):
         try:
             countries = paginator.page(page)
         except PageNotAnInteger:
+            # logger
+            Log.info("Warning| Page number is not an integer", self.request)
             countries = paginator.page(1)
         except EmptyPage:
+            # logger
+            Log.info("Warning| Empty page", self.request)
             countries = paginator.page(paginator.num_pages)
         context['countries'] = countries
+        # logger
+        Log.info("Success| Successfully returned.", self.request)
         return context
 
 
+class CountryDetailView(DetailView):
+    """"""
+    model = CountryInfo
+    template_name = 'country_details.html'
+    context_object_name = 'country'

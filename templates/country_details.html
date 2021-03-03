@@ -8,14 +8,39 @@
 {% block body %}
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Book Details #{{book.id}}</h5>
+        <h5 class="card-title">Country Details #{{country.id}}</h5>
     </div>
     <div class="card-body">
     <dl class="row">
-      <dt class="col-sm-3">Book Name</dt>
-      <dd class="col-sm-9">{{ book.name }}</dd>
-      <dt class="col-sm-3">ISBN</dt>
-      <dd class="col-sm-9">{{ book.isbn_number }}</dd>
+      <dt class="col-sm-3">Country Name</dt>
+      <dd class="col-sm-9">{{ country.name }}</dd>
+      <dt class="col-sm-3">Alphacode2</dt>
+      <dd class="col-sm-9">{{ country.alphacode2 }}</dd>
+      <dt class="col-sm-3">Capital</dt>
+      <dd class="col-sm-9">{{ country.capital }}</dd>
+      <dt class="col-sm-3">Population</dt>
+      <dd class="col-sm-9">{{ country.population }}</dd>
+      <dt class="col-sm-3">Timezones</dt>
+      <dd class="col-sm-9">{{ country.timezones }}</dd>
+      <dt class="col-sm-3">Languages</dt>
+
+        <!-- Retrive values from Language Dict -->
+        {% for data in country.languages %}
+            <dd class="col-sm-9">
+                {% for key, value in data.items %}
+                    <b>{{ key }}</b>: {{ value }},
+                {% endfor %}
+            </dd>
+            {% if forloop.counter != country.languages|length %}
+                <dt class="col-sm-3"></dt>
+            {% endif %}
+        {% endfor %}
+
+      <dt class="col-sm-3">Neighbouring_countries</dt>
+      <dd class="col-sm-9">{{ country.neighbouring_countries }}</dd>
+      <dt class="col-sm-3">Flag</dt>
+      <dd class="col-sm-9"><img style="max-height: 250px; max-width: 250px" alt="{{ country.name}}" src="{{country.flag.url}}" /></dd>
+
     </dl>
 
     </div>
